@@ -18,15 +18,10 @@ test.describe('Check products page', async()=> {
 
     test('check 1st product', async({page})=> {
         const firstProduct = page.locator('.inventory_item:first-child')
-
-        await expect(page).toHaveURL(/inventory\.html/);
-        await expect(firstProduct).toBeVisible();
-    });
-
-    test('check 1st product button', async({page})=> {
         const firstProductBtn = page.locator('.inventory_item:first-child .btn_primary')
 
         await expect(page).toHaveURL(/inventory\.html/);
+        await expect(firstProduct).toBeVisible();
         await expect(firstProductBtn).toContainText('ADD TO CART');
     });
 
