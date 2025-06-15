@@ -1,0 +1,18 @@
+{
+  "name": "playwright-tests-ts",
+  "version": "1.0.0",
+  "description": "automatical tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "login": "npx playwright test login.spec.ts",
+    "products": "npx playwright test products.spec.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^24.0.1",
+    "dotenv": "^16.5.0"
+  }
+}
