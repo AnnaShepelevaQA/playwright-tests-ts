@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test",
     "login": "npx playwright test login.spec.ts",
-    "products": "npx playwright test products.spec.ts"
+    "products": "npx playwright test products.spec.ts",
+    "cart": "npx playwright test cart.spec.ts"
   },
   "author": "",
   "license": "ISC",
