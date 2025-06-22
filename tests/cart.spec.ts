@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 test.describe('Check cart page', async()=> {
+    let btnRemove = '.cart_item .btn_secondary';
 
     test.beforeEach(async ({page}) => {
         await page.goto('');
@@ -20,13 +21,12 @@ test.describe('Check cart page', async()=> {
         await page.context().tracing.start({ screenshots: true, snapshots: true});
         // await page.screenshot({ path: 'screenshot.png' });
 
-        const btnRemove = page.locator('.cart_item .btn_secondary')
         await page.click('.inventory_item:first-child .btn_primary');
         await page.click('[fill="currentColor"]');
         
         await expect(page).toHaveURL(/cart\.html/);
         await expect(page.locator('.cart_quantity')).toContainText('1');
-        await expect(btnRemove).toBeVisible();
+        await expect(page.locator(btnRemove)).toBeVisible();
 
         // await expect(page).toHaveScreenshot();
         await page.context().tracing.stop({ path: 'trace.zip'});
@@ -34,10 +34,10 @@ test.describe('Check cart page', async()=> {
 
     test('add 1st product, remove and check', async({page})=> {
         await page.click('.inventory_item:first-child .btn_primary');
-        await page.click('[fill="currentColor"]');
+        await page.click('[href="./cart.html"]');
         await page.click('.cart_item .btn_secondary');
         
         await expect(page).toHaveURL(/cart\.html/);
-        await expect(page.locator('.removed_cart_item')).toHaveClass(/removed_cart_item/);
+        await expect(page.locator(btnRemove)).not.toBeVisible();
     });
 });
