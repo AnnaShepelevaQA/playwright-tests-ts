@@ -8,7 +8,8 @@
     "login": "npx playwright test login.spec.ts",
     "products": "npx playwright test products.spec.ts",
     "cart": "npx playwright test cart.spec.ts",
-    "browser": "npx playwright test test-browser-actions/"
+    "browser": "npx playwright test test-browser-actions/",
+    "problem-user": "npx playwright test login-users/"
   },
   "author": "",
   "license": "ISC",

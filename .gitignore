@@ -1,5 +1,7 @@
 node_modules
 .env
+problem-user-state.json
+
 trace.zip
 # Playwright
 /test-results/

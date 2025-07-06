@@ -32,12 +32,26 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  globalSetup: require.resolve('./global-setup.ts'),
+
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'setup-problem',
+      testMatch: /.*\.setup\.ts/,
     },
+    {
+      name: 'problem-tests',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'problem-user-state.json'
+      }
+    }
+
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
     // {
     //   name: 'firefox',
