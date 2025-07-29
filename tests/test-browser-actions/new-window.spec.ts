@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import dotenv from 'dotenv'
+dotenv.config()
 
 test('check open new window', async({page, context})=> {
-    await page.goto('https://the-internet.herokuapp.com/windows');
+    await page.goto(process.env.HEROKUAPP_URL + '/windows');
     const [newPage] = await Promise.all([
         context.waitForEvent("page"),
         page.click('a:has-text("Click Here")')

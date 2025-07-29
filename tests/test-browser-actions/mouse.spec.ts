@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import dotenv from 'dotenv'
+dotenv.config()
 
 test('check mouse actions', async({page})=> {
-    await page.goto('https://the-internet.herokuapp.com/hovers');
+    await page.goto(process.env.HEROKUAPP_URL + '/hovers');
     const figure3 = page.locator('.figure').nth(2);
     const box = await figure3.boundingBox();
 

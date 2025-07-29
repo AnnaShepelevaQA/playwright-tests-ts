@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
+import dotenv from 'dotenv'
+dotenv.config()
 
 test.describe('check keyboard actions', async()=> {
     test('should be "CONTROL" after click', async({page})=> {
-        await page.goto('https://the-internet.herokuapp.com/key_presses');
+        await page.goto(process.env.HEROKUAPP_URL + '/key_presses');
         await page.keyboard.press("Control")
         const result = page.locator('#result');
 
@@ -10,7 +12,7 @@ test.describe('check keyboard actions', async()=> {
     });
 
     test('should be "N" after actions', async({page})=> {
-        await page.goto('https://the-internet.herokuapp.com/key_presses');
+        await page.goto(process.env.HEROKUAPP_URL + '/key_presses');
         const [name] = await Promise.all ([
             await page.keyboard.press("a"),
             await page.keyboard.press("n"),
